@@ -1,31 +1,27 @@
 import './App.css';
-import HelloWorld from './components/HelloWorld';
-import Phrase from './components/Phrase';
-import SayMyName from './components/SayMyName';
-import Person from './components/Person';
-import List from './components/List';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import Home from './components/pages/home';
+import Empresa from './components/pages/empresa';
+import Contato from './components/pages/contato';
+
 
 function App() {
-  const name = 'Daniel Bispo';
-  const url = 'https://placehold.co/150';
-  
-  function sum(a,b){
-    return a+b;
-  }
 
   return (
-    <div className="App">
-      <Phrase />
-      <SayMyName name={name} />
-      <Person 
-      name = "Daniel" 
-      age="20" 
-      profession="Web Developer" 
-      img={url} />
+    <Router> 
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/empresa">Empresa</Link></li>
+        <li><Link to="/contato">Contato</Link></li>
+      </ul>
 
-      <List />
-    </div>
-  );
+      <Routes>
+        <Route path="/" element={<Home />} > </Route>
+        <Route path="/empresa" element={<Empresa />} > </Route>
+        <Route path="/contato" element={<Contato />} > </Route>
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;
